@@ -3,7 +3,7 @@ import { body, param, query, validationResult } from "express-validator";
 export const validate = (validations) => {
   return async (req, res, next) => {
     // run all
-    await Promise.all(validations.map(validation.run(req)));
+    await Promise.all(validations.map(validations.run(req)));
 
     const error = validationResult(req);
 
