@@ -21,10 +21,10 @@ class DatabaseConnection {
     });
     mongoose.connection.on("disconnected", () => {
       console.log("mongo db disconnection");
-      this.handleDisconnection()
+      this.handleDisconnection();
     });
 
-    process.on('SIGTERM', this.handleAppTermination.bind(this))
+    process.on("SIGTERM", this.handleAppTermination.bind(this));
   }
 
   async connect() {
@@ -90,20 +90,19 @@ class DatabaseConnection {
     }
   }
 
-  getConnectionStatus(){
+  getConnectionStatus() {
     return {
-      isConnected : this.inConnected,
+      isConnected: this.inConnected,
       readyState: mongoose.connection.readyState,
-      readyState: mongoose.connection.host,
-      readyState: mongoose.connection.name
-    }
+      host: mongoose.connection.host,
+      name: mongoose.connection.name,
+    };
   }
- 
 }
 
 // create singleton intence
 
-const dbConnection = new DatabaseConnection()
+const dbConnection = new DatabaseConnection();
 
-export default dbConnection.connect.bind(dbConnection)
-export const getDbStatus = dbConnection.getConnectionStatus.bind(dbConnection)
+export default dbConnection.connect.bind(dbConnection);
+export const getDbStatus = dbConnection.getConnectionStatus.bind(dbConnection);

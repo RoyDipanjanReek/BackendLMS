@@ -17,7 +17,7 @@ const PORT = process.env.PORT;
 //Global rate limiting
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+  limit: 100, // Lnpm initimit each IP to 100 requests per `window` (here, per 15 minutes).
   message: "Too many request from this IP, please try later",
 });
 
